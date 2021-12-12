@@ -12,8 +12,8 @@ import io.vertx.mutiny.core.eventbus.EventBus;
 import io.vertx.mutiny.core.eventbus.Message;
 
 
-@Path("/greeting")
-public class ExampleResource {
+@Path("/greet")
+public class AsyncResource {
 
 	@Inject
 	private EventBus eventBus;
@@ -21,7 +21,7 @@ public class ExampleResource {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public Uni<String> hello(@QueryParam("name") String name) {
-		return eventBus.<String>request("greeting", name)
+		return eventBus.<String>request("demo-topic", name)
 				.onItem().
 				transform(Message::body);
 

@@ -8,7 +8,7 @@ import io.smallrye.mutiny.Uni;
 @ApplicationScoped
 public class GreetingService {
 
-	@ConsumeEvent(value = "greeting")
+	@ConsumeEvent(value = "demo-topic")
 	public Uni<String> onMessage(String name) {
 		return Uni
 				.createFrom()
