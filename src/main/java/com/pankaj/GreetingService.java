@@ -9,7 +9,8 @@ import io.smallrye.mutiny.Uni;
 public class GreetingService {
 
 	@ConsumeEvent(value = "demo-topic")
-	public Uni<String> onMessage(String name) {
+	public Uni<String> onMessage(String name) throws InterruptedException {
+		Thread.sleep(1000);
 		return Uni
 				.createFrom()
 				.item(() -> "Hello, " + name.toUpperCase());
